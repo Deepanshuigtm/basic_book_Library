@@ -1,0 +1,23 @@
+{% extends "book/base.html" %}
+
+{% block title %}
+    All Books
+{% endblock %}
+
+{% block content %}
+    <ul style="display: flex; gap: 90px">
+        {% for i in data %}
+            <div>
+                <li>Title is {{ i.title }} <a href="{% url 'book_detail' slug=i.slug %}">Link</a></li>
+                <li>id is {{ i.slug }}</li>
+                <li>Author is {{ i.author }}</li>
+                <li>Ratings is {{ i.ratings }}</li>
+                <li>Popularity is {{ i.is_bestselling }}</li>
+            </div>
+        {% endfor %}
+    </ul>
+    <p> Total number of books available {{ total_number_of_books }}</p>
+    <p> Average Rating :  {{ average.ratings__avg }}</p>
+    <p> Max Rating :  {{ average.ratings__max }}</p>
+    <p> Min Rating :  {{ average.ratings__min }}</p>
+{% endblock %}
